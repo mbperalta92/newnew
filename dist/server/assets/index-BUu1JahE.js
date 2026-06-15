@@ -1,0 +1,911 @@
+import { r as reactExports, T as jsxRuntimeExports } from "./server-El_4dxCx.js";
+import "node:async_hooks";
+import "node:stream/web";
+import "node:stream";
+const mergeClasses = (...classes) => classes.filter((className, index, array) => {
+  return Boolean(className) && className.trim() !== "" && array.indexOf(className) === index;
+}).join(" ").trim();
+const toKebabCase = (string) => string.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
+const toCamelCase = (string) => string.replace(
+  /^([A-Z])|[\s-_]+(\w)/g,
+  (match, p1, p2) => p2 ? p2.toUpperCase() : p1.toLowerCase()
+);
+const toPascalCase = (string) => {
+  const camelCase = toCamelCase(string);
+  return camelCase.charAt(0).toUpperCase() + camelCase.slice(1);
+};
+var defaultAttributes = {
+  xmlns: "http://www.w3.org/2000/svg",
+  width: 24,
+  height: 24,
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 2,
+  strokeLinecap: "round",
+  strokeLinejoin: "round"
+};
+const hasA11yProp = (props) => {
+  for (const prop in props) {
+    if (prop.startsWith("aria-") || prop === "role" || prop === "title") {
+      return true;
+    }
+  }
+  return false;
+};
+const Icon = reactExports.forwardRef(
+  ({
+    color = "currentColor",
+    size = 24,
+    strokeWidth = 2,
+    absoluteStrokeWidth,
+    className = "",
+    children,
+    iconNode,
+    ...rest
+  }, ref) => reactExports.createElement(
+    "svg",
+    {
+      ref,
+      ...defaultAttributes,
+      width: size,
+      height: size,
+      stroke: color,
+      strokeWidth: absoluteStrokeWidth ? Number(strokeWidth) * 24 / Number(size) : strokeWidth,
+      className: mergeClasses("lucide", className),
+      ...!children && !hasA11yProp(rest) && { "aria-hidden": "true" },
+      ...rest
+    },
+    [
+      ...iconNode.map(([tag, attrs]) => reactExports.createElement(tag, attrs)),
+      ...Array.isArray(children) ? children : [children]
+    ]
+  )
+);
+const createLucideIcon = (iconName, iconNode) => {
+  const Component = reactExports.forwardRef(
+    ({ className, ...props }, ref) => reactExports.createElement(Icon, {
+      ref,
+      iconNode,
+      className: mergeClasses(
+        `lucide-${toKebabCase(toPascalCase(iconName))}`,
+        `lucide-${iconName}`,
+        className
+      ),
+      ...props
+    })
+  );
+  Component.displayName = toPascalCase(iconName);
+  return Component;
+};
+const __iconNode$t = [
+  ["path", { d: "m12 19-7-7 7-7", key: "1l729n" }],
+  ["path", { d: "M19 12H5", key: "x3x0zl" }]
+];
+const ArrowLeft = createLucideIcon("arrow-left", __iconNode$t);
+const __iconNode$s = [
+  ["path", { d: "M5 12h14", key: "1ays0h" }],
+  ["path", { d: "m12 5 7 7-7 7", key: "xquz4c" }]
+];
+const ArrowRight = createLucideIcon("arrow-right", __iconNode$s);
+const __iconNode$r = [
+  ["path", { d: "M7 7h10v10", key: "1tivn9" }],
+  ["path", { d: "M7 17 17 7", key: "1vkiza" }]
+];
+const ArrowUpRight = createLucideIcon("arrow-up-right", __iconNode$r);
+const __iconNode$q = [
+  ["path", { d: "M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16", key: "jecpp" }],
+  ["rect", { width: "20", height: "14", x: "2", y: "6", rx: "2", key: "i6l2r4" }]
+];
+const Briefcase = createLucideIcon("briefcase", __iconNode$q);
+const __iconNode$p = [
+  ["path", { d: "M10 12h4", key: "a56b0p" }],
+  ["path", { d: "M10 8h4", key: "1sr2af" }],
+  ["path", { d: "M14 21v-3a2 2 0 0 0-4 0v3", key: "1rgiei" }],
+  [
+    "path",
+    {
+      d: "M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2",
+      key: "secmi2"
+    }
+  ],
+  ["path", { d: "M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16", key: "16ra0t" }]
+];
+const Building2 = createLucideIcon("building-2", __iconNode$p);
+const __iconNode$o = [
+  ["rect", { width: "16", height: "20", x: "4", y: "2", rx: "2", key: "1nb95v" }],
+  ["line", { x1: "8", x2: "16", y1: "6", y2: "6", key: "x4nwl0" }],
+  ["line", { x1: "16", x2: "16", y1: "14", y2: "18", key: "wjye3r" }],
+  ["path", { d: "M16 10h.01", key: "1m94wz" }],
+  ["path", { d: "M12 10h.01", key: "1nrarc" }],
+  ["path", { d: "M8 10h.01", key: "19clt8" }],
+  ["path", { d: "M12 14h.01", key: "1etili" }],
+  ["path", { d: "M8 14h.01", key: "6423bh" }],
+  ["path", { d: "M12 18h.01", key: "mhygvu" }],
+  ["path", { d: "M8 18h.01", key: "lrp35t" }]
+];
+const Calculator = createLucideIcon("calculator", __iconNode$o);
+const __iconNode$n = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
+const Check = createLucideIcon("check", __iconNode$n);
+const __iconNode$m = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["line", { x1: "12", x2: "12", y1: "8", y2: "12", key: "1pkeuh" }],
+  ["line", { x1: "12", x2: "12.01", y1: "16", y2: "16", key: "4dfq90" }]
+];
+const CircleAlert = createLucideIcon("circle-alert", __iconNode$m);
+const __iconNode$l = [
+  ["rect", { width: "18", height: "18", x: "3", y: "3", rx: "2", key: "afitv7" }],
+  ["path", { d: "M11 9h4a2 2 0 0 0 2-2V3", key: "1ve2rv" }],
+  ["circle", { cx: "9", cy: "9", r: "2", key: "af1f0g" }],
+  ["path", { d: "M7 21v-4a2 2 0 0 1 2-2h4", key: "1fwkro" }],
+  ["circle", { cx: "15", cy: "15", r: "2", key: "3i40o0" }]
+];
+const CircuitBoard = createLucideIcon("circuit-board", __iconNode$l);
+const __iconNode$k = [
+  ["rect", { width: "8", height: "4", x: "8", y: "2", rx: "1", ry: "1", key: "tgr4d6" }],
+  [
+    "path",
+    {
+      d: "M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2",
+      key: "116196"
+    }
+  ],
+  ["path", { d: "m9 14 2 2 4-4", key: "df797q" }]
+];
+const ClipboardCheck = createLucideIcon("clipboard-check", __iconNode$k);
+const __iconNode$j = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["line", { x1: "22", x2: "18", y1: "12", y2: "12", key: "l9bcsi" }],
+  ["line", { x1: "6", x2: "2", y1: "12", y2: "12", key: "13hhkx" }],
+  ["line", { x1: "12", x2: "12", y1: "6", y2: "2", key: "10w3f3" }],
+  ["line", { x1: "12", x2: "12", y1: "22", y2: "18", key: "15g9kq" }]
+];
+const Crosshair = createLucideIcon("crosshair", __iconNode$j);
+const __iconNode$i = [
+  [
+    "path",
+    {
+      d: "M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0",
+      key: "1nclc0"
+    }
+  ],
+  ["circle", { cx: "12", cy: "12", r: "3", key: "1v7zrd" }]
+];
+const Eye = createLucideIcon("eye", __iconNode$i);
+const __iconNode$h = [
+  [
+    "path",
+    {
+      d: "M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6",
+      key: "g5mvt7"
+    }
+  ],
+  ["path", { d: "M14 2v5a1 1 0 0 0 1 1h5", key: "wfsgrz" }],
+  ["path", { d: "m14 20 2 2 4-4", key: "15kota" }]
+];
+const FileCheckCorner = createLucideIcon("file-check-corner", __iconNode$h);
+const __iconNode$g = [
+  [
+    "path",
+    {
+      d: "M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z",
+      key: "1oefj6"
+    }
+  ],
+  ["path", { d: "M14 2v5a1 1 0 0 0 1 1h5", key: "wfsgrz" }],
+  ["circle", { cx: "11.5", cy: "14.5", r: "2.5", key: "1bq0ko" }],
+  ["path", { d: "M13.3 16.3 15 18", key: "2quom7" }]
+];
+const FileSearch = createLucideIcon("file-search", __iconNode$g);
+const __iconNode$f = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["path", { d: "M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20", key: "13o1zl" }],
+  ["path", { d: "M2 12h20", key: "9i4pu4" }]
+];
+const Globe = createLucideIcon("globe", __iconNode$f);
+const __iconNode$e = [
+  ["path", { d: "m11 17 2 2a1 1 0 1 0 3-3", key: "efffak" }],
+  [
+    "path",
+    {
+      d: "m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4",
+      key: "9pr0kb"
+    }
+  ],
+  ["path", { d: "m21 3 1 11h-2", key: "1tisrp" }],
+  ["path", { d: "M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3", key: "1uvwmv" }],
+  ["path", { d: "M3 4h8", key: "1ep09j" }]
+];
+const Handshake = createLucideIcon("handshake", __iconNode$e);
+const __iconNode$d = [
+  [
+    "path",
+    {
+      d: "M18 5a2 2 0 0 1 2 2v8.526a2 2 0 0 0 .212.897l1.068 2.127a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45l1.068-2.127A2 2 0 0 0 4 15.526V7a2 2 0 0 1 2-2z",
+      key: "1pdavp"
+    }
+  ],
+  ["path", { d: "M20.054 15.987H3.946", key: "14rxg9" }]
+];
+const Laptop = createLucideIcon("laptop", __iconNode$d);
+const __iconNode$c = [
+  ["rect", { width: "18", height: "11", x: "3", y: "11", rx: "2", ry: "2", key: "1w4ew1" }],
+  ["path", { d: "M7 11V7a5 5 0 0 1 10 0v4", key: "fwvmzm" }]
+];
+const Lock = createLucideIcon("lock", __iconNode$c);
+const __iconNode$b = [
+  ["path", { d: "m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7", key: "132q7q" }],
+  ["rect", { x: "2", y: "4", width: "20", height: "16", rx: "2", key: "izxlao" }]
+];
+const Mail = createLucideIcon("mail", __iconNode$b);
+const __iconNode$a = [
+  ["path", { d: "M4 5h16", key: "1tepv9" }],
+  ["path", { d: "M4 12h16", key: "1lakjw" }],
+  ["path", { d: "M4 19h16", key: "1djgab" }]
+];
+const Menu = createLucideIcon("menu", __iconNode$a);
+const __iconNode$9 = [
+  ["path", { d: "M6 18h8", key: "1borvv" }],
+  ["path", { d: "M3 22h18", key: "8prr45" }],
+  ["path", { d: "M14 22a7 7 0 1 0 0-14h-1", key: "1jwaiy" }],
+  ["path", { d: "M9 14h2", key: "197e7h" }],
+  ["path", { d: "M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z", key: "1bmzmy" }],
+  ["path", { d: "M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3", key: "1drr47" }]
+];
+const Microscope = createLucideIcon("microscope", __iconNode$9);
+const __iconNode$8 = [
+  ["rect", { width: "5", height: "5", x: "3", y: "3", rx: "1", key: "1tu5fj" }],
+  ["rect", { width: "5", height: "5", x: "16", y: "3", rx: "1", key: "1v8r4q" }],
+  ["rect", { width: "5", height: "5", x: "3", y: "16", rx: "1", key: "1x03jg" }],
+  ["path", { d: "M21 16h-3a2 2 0 0 0-2 2v3", key: "177gqh" }],
+  ["path", { d: "M21 21v.01", key: "ents32" }],
+  ["path", { d: "M12 7v3a2 2 0 0 1-2 2H7", key: "8crl2c" }],
+  ["path", { d: "M3 12h.01", key: "nlz23k" }],
+  ["path", { d: "M12 3h.01", key: "n36tog" }],
+  ["path", { d: "M12 16v.01", key: "133mhm" }],
+  ["path", { d: "M16 12h1", key: "1slzba" }],
+  ["path", { d: "M21 12v.01", key: "1lwtk9" }],
+  ["path", { d: "M12 21v-1", key: "1880an" }]
+];
+const QrCode = createLucideIcon("qr-code", __iconNode$8);
+const __iconNode$7 = [
+  ["path", { d: "m21 21-4.34-4.34", key: "14j7rj" }],
+  ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }]
+];
+const Search = createLucideIcon("search", __iconNode$7);
+const __iconNode$6 = [
+  [
+    "path",
+    {
+      d: "M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z",
+      key: "oel41y"
+    }
+  ],
+  ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
+];
+const ShieldCheck = createLucideIcon("shield-check", __iconNode$6);
+const __iconNode$5 = [
+  [
+    "path",
+    {
+      d: "M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z",
+      key: "1s2grr"
+    }
+  ],
+  ["path", { d: "M20 2v4", key: "1rf3ol" }],
+  ["path", { d: "M22 4h-4", key: "gwowj6" }],
+  ["circle", { cx: "4", cy: "20", r: "2", key: "6kqj1y" }]
+];
+const Sparkles = createLucideIcon("sparkles", __iconNode$5);
+const __iconNode$4 = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["circle", { cx: "12", cy: "12", r: "6", key: "1vlfrh" }],
+  ["circle", { cx: "12", cy: "12", r: "2", key: "1c9p78" }]
+];
+const Target = createLucideIcon("target", __iconNode$4);
+const __iconNode$3 = [
+  ["path", { d: "m17 2-5 5-5-5", key: "16satq" }],
+  ["rect", { width: "20", height: "15", x: "2", y: "7", rx: "2", key: "1e6viu" }]
+];
+const Tv = createLucideIcon("tv", __iconNode$3);
+const __iconNode$2 = [
+  ["path", { d: "M12 3v12", key: "1x0j5s" }],
+  ["path", { d: "m17 8-5-5-5 5", key: "7q97r8" }],
+  ["path", { d: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4", key: "ih7n3h" }]
+];
+const Upload = createLucideIcon("upload", __iconNode$2);
+const __iconNode$1 = [
+  ["path", { d: "M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2", key: "975kel" }],
+  ["circle", { cx: "12", cy: "7", r: "4", key: "17ys0d" }]
+];
+const User = createLucideIcon("user", __iconNode$1);
+const __iconNode = [
+  ["path", { d: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2", key: "1yyitq" }],
+  ["path", { d: "M16 3.128a4 4 0 0 1 0 7.744", key: "16gr8j" }],
+  ["path", { d: "M22 21v-2a4 4 0 0 0-3-3.87", key: "kshegd" }],
+  ["circle", { cx: "9", cy: "7", r: "4", key: "nufk8" }]
+];
+const Users = createLucideIcon("users", __iconNode);
+const logo = "/assets/repfix-logo-CRIQ8kPF.svg";
+const links = [
+  { href: "#inicio", label: "Início" },
+  { href: "#servicos", label: "Serviços" },
+  { href: "#relatorios", label: "Relatórios" },
+  { href: "#orcamentos", label: "Orçamentos" }
+];
+function Navbar() {
+  const [open, setOpen] = reactExports.useState(false);
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("header", { className: "fixed top-0 inset-x-0 z-50 glass", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("nav", { className: "max-w-7xl mx-auto flex items-center justify-between px-6 py-4", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#inicio", className: "flex items-center group", "aria-label": "REPFIX", children: /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: logo, alt: "REPFIX Serviços Técnicos", className: "h-11 w-auto transition-transform duration-500 group-hover:scale-[1.03]" }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("ul", { className: "hidden md:flex items-center gap-8 text-sm text-muted-foreground", children: links.map((l) => /* @__PURE__ */ jsxRuntimeExports.jsx("li", { children: /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: l.href, className: "relative hover:text-foreground transition-colors after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 hover:after:w-full after:bg-gold-gradient after:transition-all after:duration-300", children: l.label }) }, l.href)) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#orcamentos", className: "hidden sm:inline-flex items-center rounded-full px-5 py-2.5 text-sm font-semibold bg-gold-gradient text-[#0B1325] hover:shadow-[0_10px_30px_-6px_rgba(252,246,186,0.55)] transition-shadow", children: "Entre em contacto" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("button", { onClick: () => setOpen((v) => !v), className: "md:hidden p-2 rounded-md border border-border/60", "aria-label": "Menu", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Menu, { className: "h-5 w-5" }) })
+      ] })
+    ] }),
+    open && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "md:hidden border-t border-border/60 bg-[#0B1325]/95", children: /* @__PURE__ */ jsxRuntimeExports.jsx("ul", { className: "px-6 py-4 flex flex-col gap-3 text-sm", children: links.map((l) => /* @__PURE__ */ jsxRuntimeExports.jsx("li", { children: /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: l.href, onClick: () => setOpen(false), className: "block py-1.5 text-muted-foreground hover:text-foreground", children: l.label }) }, l.href)) }) })
+  ] });
+}
+function Hero() {
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { id: "inicio", className: "relative pt-36 pb-24 overflow-hidden", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 grid-pattern opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-32 right-0 h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,rgba(191,149,63,0.25),transparent_70%)] blur-3xl" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute bottom-0 left-0 h-[300px] w-[300px] rounded-full bg-[radial-gradient(circle,rgba(170,119,28,0.18),transparent_70%)] blur-3xl" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative max-w-7xl mx-auto px-6 text-center", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "inline-flex items-center gap-2 rounded-full glass-card px-4 py-1.5 text-xs text-muted-foreground", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Sparkles, { className: "h-3.5 w-3.5 text-[#FCF6BA]" }),
+        "Eletrónica · Diagnóstico de precisão · Orçamentação transparente"
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "mt-6 text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.05]", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-gold-gradient", children: "Parceria técnica" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+        "de ",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "shimmer", children: "ponta a ponta" })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-7 mx-auto max-w-3xl text-base md:text-lg text-muted-foreground leading-relaxed", children: "A REPFIX é especializada em avaliação e análise técnica. Realizamos inspeções, diagnósticos, peritagens e auditorias, apoiando empresas e particulares na identificação de falhas, avaliação de riscos, investigação de ocorrências e tomada de decisões fundamentadas através de relatórios técnicos independentes." }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-10 flex flex-col sm:flex-row items-center justify-center gap-4", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("a", { href: "#orcamentos", className: "group inline-flex items-center gap-2 rounded-full bg-gold-gradient text-[#0B1325] font-semibold px-7 py-3.5 shadow-[var(--shadow-gold)] hover:scale-[1.03] transition-transform", children: [
+          "Pedir Orçamento ",
+          /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowRight, { className: "h-4 w-4 group-hover:translate-x-1 transition-transform" })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#servicos", className: "inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-semibold text-foreground border border-[#BF953F]/60 hover:border-[#FCF6BA] hover:bg-[rgba(191,149,63,0.08)] transition-colors", children: "Conhecer Serviços" })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-12 inline-flex items-center gap-2 text-xs text-muted-foreground", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(ShieldCheck, { className: "h-4 w-4 text-[#FCF6BA]" }),
+        " Sem custos ocultos · Diagnóstico claro · Confidencialidade garantida"
+      ] })
+    ] })
+  ] });
+}
+const blocks = [
+  {
+    badge: "01",
+    tag: "Inspeção",
+    icon: Search,
+    title: "1 - 🔍 AVALIAÇÃO TÉCNICA",
+    desc: "Realizamos avaliações técnicas independentes para identificar falhas, analisar o estado de equipamentos e apoiar decisões fundamentadas através de uma abordagem rigorosa e objetiva.",
+    items: [
+      { icon: CircuitBoard, label: "Diagnóstico técnico especializado" },
+      { icon: Tv, label: "Avaliação de equipamentos e sistemas" },
+      { icon: Laptop, label: "Análise de falhas e desempenho" }
+    ],
+    cta: "Pedir avaliação"
+  },
+  {
+    badge: "02",
+    tag: "Consultoria",
+    icon: Building2,
+    title: "2 - 🏢 B2B Auditorias & Consultoria",
+    desc: "Apoiamos empresas na identificação de riscos, otimização de ativos e tomada de decisão através de auditorias, análises técnicas e consultoria especializada.",
+    items: [
+      { icon: Handshake, label: "Auditorias e verificações" },
+      { icon: Users, label: "Análise e mitigação de riscos" },
+      { icon: Briefcase, label: "Consultoria técnica especializada" }
+    ],
+    cta: "Pedir proposta B2B"
+  },
+  {
+    badge: "03",
+    tag: "Laudos",
+    icon: FileSearch,
+    title: "3 - 📑 PERITAGENS",
+    desc: "Produzimos relatórios técnicos independentes e fundamentados para apoiar processos de análise, investigação de ocorrências e tomada de decisão.",
+    items: [
+      { icon: Crosshair, label: "Peritagens técnicas independentes" },
+      { icon: ClipboardCheck, label: "Investigação de ocorrências" },
+      { icon: Calculator, label: "Relatórios técnicos fundamentados" }
+    ],
+    cta: "Solicitar relatório"
+  }
+];
+function Services() {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { id: "servicos", className: "relative py-28", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-7xl mx-auto px-6", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-2xl", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-xs font-semibold tracking-[0.2em] text-[#BF953F] uppercase", children: "Serviços" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "mt-3 text-4xl md:text-5xl font-bold tracking-tight", children: [
+        "Três frentes técnicas, ",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-gold-gradient", children: "um único padrão de rigor" })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-4 text-muted-foreground", children: "Particulares, empresas ou peritagens independentes — adaptamos o método, mantemos a transparência e a precisão técnica." })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6", children: blocks.map((b) => /* @__PURE__ */ jsxRuntimeExports.jsxs("article", { className: "group gold-glow glass-card rounded-3xl p-7 relative overflow-hidden flex flex-col", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-16 -right-16 h-40 w-40 rounded-full bg-[radial-gradient(circle,rgba(252,246,186,0.18),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between relative", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "inline-flex items-center rounded-full bg-[rgba(191,149,63,0.12)] border border-[#BF953F]/40 px-3 py-1 text-[11px] font-semibold tracking-wider uppercase text-[#FCF6BA]", children: b.badge }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gold-gradient text-[#0B1325] shadow-[0_8px_24px_-8px_rgba(252,246,186,0.6)] group-hover:rotate-[-6deg] transition-transform duration-500", children: /* @__PURE__ */ jsxRuntimeExports.jsx(b.icon, { className: "h-6 w-6", strokeWidth: 2.2 }) })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-5 text-xs font-semibold tracking-[0.2em] text-[#BF953F] uppercase", children: b.tag }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "mt-2 text-xl font-bold leading-snug", children: b.title }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-3 text-sm text-muted-foreground leading-relaxed", children: b.desc }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("ul", { className: "mt-6 space-y-2.5 flex-1", children: b.items.map((i) => /* @__PURE__ */ jsxRuntimeExports.jsxs("li", { className: "flex items-start gap-3 rounded-xl p-3 bg-[#0e1a36]/60 border border-[#BF953F]/15 group-hover:border-[#BF953F]/35 transition-colors", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-8 w-8 rounded-lg bg-[#0B1325] border border-[#BF953F]/30 flex items-center justify-center shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(i.icon, { className: "h-4 w-4 text-[#FCF6BA]" }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs pt-1.5 text-foreground/90", children: i.label })
+      ] }, i.label)) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("a", { href: "#orcamentos", className: "mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-gold-gradient group-hover:gap-2.5 transition-all", children: [
+        b.cta,
+        " ",
+        /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowUpRight, { className: "h-4 w-4 text-[#FCF6BA]" })
+      ] })
+    ] }, b.badge)) })
+  ] }) });
+}
+function ImageBreak({ image, eyebrow, title, caption, align = "left" }) {
+  const alignCls = align === "right" ? "ml-auto text-right" : align === "center" ? "mx-auto text-center" : "text-left";
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "relative py-12", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "max-w-7xl mx-auto px-6", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative overflow-hidden rounded-3xl border border-[#BF953F]/30 shadow-[var(--shadow-elegant)]", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "img",
+      {
+        src: image,
+        alt: "",
+        loading: "lazy",
+        className: "h-[280px] md:h-[360px] w-full object-cover scale-105"
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-[linear-gradient(115deg,rgba(11,19,37,0.95)_0%,rgba(11,19,37,0.7)_45%,rgba(11,19,37,0.45)_100%)]" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-[radial-gradient(circle_at_85%_20%,rgba(252,246,186,0.18),transparent_55%)]" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 bg-[radial-gradient(circle_at_10%_90%,rgba(170,119,28,0.20),transparent_55%)]" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 flex items-center px-8 md:px-14", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: `max-w-xl ${alignCls}`, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-[11px] font-semibold tracking-[0.25em] text-[#FCF6BA] uppercase", children: eyebrow }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "mt-3 text-2xl md:text-4xl font-bold tracking-tight leading-tight", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-gold-gradient", children: title }) }),
+      caption && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-3 text-sm md:text-base text-foreground/85 max-w-md", children: caption })
+    ] }) })
+  ] }) }) });
+}
+const values = [
+  {
+    icon: Eye,
+    title: "Transparência Total",
+    desc: "Sem custos ocultos. Explicamos o diagnóstico de forma clara e simples, antes de qualquer intervenção."
+  },
+  {
+    icon: Microscope,
+    title: "Rigor Técnico",
+    desc: "Relatórios detalhados com identificação da causa-raiz da avaria e evidência documental."
+  },
+  {
+    icon: Target,
+    title: "Foco na Resolução",
+    desc: "Respostas rápidas para situações críticas. Emitimos diagnósticos e pareceres técnicos com a máxima agilidade, permitindo que avance sem perdas de tempo."
+  }
+];
+function Values() {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "relative py-28", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-7xl mx-auto px-6", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-2xl", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-xs font-semibold tracking-[0.2em] text-[#BF953F] uppercase", children: "Os nossos pilares" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "mt-3 text-4xl md:text-5xl font-bold tracking-tight", children: [
+        "O que nos define ",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-gold-gradient", children: "no terreno" })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-4 text-muted-foreground", children: "Acreditamos que confiança técnica não se compra com slogans — constrói-se com método, clareza e responsabilidade." })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-14 grid md:grid-cols-3 gap-6", children: values.map((v) => /* @__PURE__ */ jsxRuntimeExports.jsxs("article", { className: "gold-glow glass-card rounded-3xl p-8", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gold-gradient text-[#0B1325]", children: /* @__PURE__ */ jsxRuntimeExports.jsx(v.icon, { className: "h-6 w-6", strokeWidth: 2.2 }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "mt-6 text-xl font-bold", children: v.title }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-2 text-sm text-muted-foreground leading-relaxed", children: v.desc })
+    ] }, v.title)) })
+  ] }) });
+}
+const features = [
+  { icon: Lock, title: "Criptografia de Dados", desc: "Documentos cifrados ponta-a-ponta com acesso controlado por parceiro." },
+  { icon: Crosshair, title: "Diagnóstico de Causa-Raiz", desc: "Análise estruturada com evidência fotográfica e rastreio histórico." },
+  { icon: Calculator, title: "Orçamentação Detalhada", desc: "Peça-a-peça, mão-de-obra e SLA — pronto para aprovação financeira." }
+];
+function Reports() {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { id: "relatorios", className: "relative py-28", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-xs font-semibold tracking-[0.2em] text-[#BF953F] uppercase", children: "Relatórios Técnicos" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "mt-3 text-4xl md:text-5xl font-bold tracking-tight", children: [
+        "Documentação técnica ",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-gold-gradient", children: "de nível corporativo" })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-5 text-muted-foreground leading-relaxed", children: "Cada intervenção gera um relatório auditável, defensável e pronto para os fluxos de aprovação das suas equipas financeiras, jurídicas e de seguros." }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("ul", { className: "mt-7 space-y-4", children: features.map((f) => /* @__PURE__ */ jsxRuntimeExports.jsxs("li", { className: "flex items-start gap-4", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-10 w-10 rounded-lg bg-gold-gradient text-[#0B1325] flex items-center justify-center shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(f.icon, { className: "h-5 w-5" }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "font-semibold", children: f.title }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-sm text-muted-foreground mt-0.5", children: f.desc })
+        ] })
+      ] }, f.title)) })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -inset-4 rounded-[2rem] bg-[var(--gradient-gold-soft)] blur-2xl opacity-60" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "relative rounded-2xl border-gold p-1.5 shadow-[var(--shadow-elegant)] float-soft", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-xl bg-[#0B1325] p-6 text-left", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between border-b border-border/60 pb-4", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2.5", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-9 w-9 rounded-md bg-gold-gradient flex items-center justify-center text-[#0B1325]", children: /* @__PURE__ */ jsxRuntimeExports.jsx(FileCheckCorner, { className: "h-5 w-5" }) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-sm font-bold text-gold-gradient", children: "REPFIX · Relatório Técnico" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-[10px] text-muted-foreground", children: "Ref. RPX-2026-00428 · Confidencial" })
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[10px] px-2 py-1 rounded-full border border-[#BF953F]/60 text-[#FCF6BA]", children: "B2B · NDA" })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-2 gap-3 mt-5 text-xs", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "glass-card rounded-lg p-3", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-muted-foreground", children: "Parceiro" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-1 font-semibold", children: "Acme Insurance Group" })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "glass-card rounded-lg p-3", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-muted-foreground", children: "Tipo" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-1 font-semibold", children: "Peritagem · Sinistro #4821" })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-4 glass-card rounded-lg p-4 text-xs space-y-2.5", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "font-semibold text-foreground", children: "Causa-Raiz" }),
+          [
+            ["Fonte", "Sobretensão na rede pública", "Confirmado"],
+            ["Placa", "Componentes SMD danificados", "Substituir"],
+            ["Cobertura", "Apólice multi-riscos AC-12", "Elegível"]
+          ].map(([a, b, c]) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-12 gap-2 py-1.5 border-b border-border/40 last:border-0", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "col-span-3 text-muted-foreground", children: a }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "col-span-6", children: b }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "col-span-3 text-right text-[#FCF6BA]", children: c })
+          ] }, a))
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-4 flex items-center justify-between text-xs", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground", children: "Orçamento estimado" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-lg font-bold text-gold-gradient", children: "€ 1 284,90" })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-5 h-1.5 rounded-full bg-[#1a2540] overflow-hidden", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-full w-[92%] bg-gold-gradient" }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-1.5 text-[10px] text-muted-foreground", children: "Validação técnica · 92%" })
+      ] }) })
+    ] })
+  ] }) });
+}
+const empresaServices = [
+  "Outsourcing & Parcerias B2B",
+  "Pedido de Proposta / Orçamento",
+  "Avaliação Técnica de Equipamentos",
+  "Inspeção / Verificação Técnica",
+  "Peritagem Técnica",
+  "Parceria Comercial",
+  "Outro Assunto"
+];
+const particularAreas = [
+  "Peritagem",
+  "Avaliação Técnica",
+  "Pedido de Orçamento",
+  "Esclarecimento Técnico",
+  "Outro Assunto"
+];
+function BudgetForm() {
+  const [step, setStep] = reactExports.useState(0);
+  const [profile, setProfile] = reactExports.useState(null);
+  const [data, setData] = reactExports.useState({
+    name: "",
+    email: "",
+    company: "",
+    contact: "",
+    serviceNeed: "",
+    interestArea: "",
+    description: "",
+    fileName: "",
+    phone: ""
+  });
+  const [done, setDone] = reactExports.useState(false);
+  const steps = ["Perfil", "Detalhes", "Pedido"];
+  const progress = (step + 1) / steps.length * 100;
+  const isEmailValid = data.email === "" || /\S+@\S+\.\S+/.test(data.email);
+  const baseValid = data.name.trim().length > 1 && data.email.trim().length > 1 && isEmailValid;
+  const canNext = step === 0 && profile !== null && baseValid || step === 1 && profile === "empresa" && data.company && data.contact && data.serviceNeed || step === 1 && profile === "particular" && data.interestArea || step === 2 && data.description.trim().length > 5 && data.phone.trim().length > 5;
+  const handleSubmit = () => {
+    const isB2B = profile === "empresa";
+    const prefix = isB2B ? "B2B" : "B2C";
+    const subject = encodeURIComponent(`Contacto Web "${prefix} – ${data.name}"`);
+    let bodyText = `Nome: ${data.name}
+Email: ${data.email}
+Telefone: ${data.phone}
+
+`;
+    if (isB2B) {
+      bodyText += `Empresa: ${data.company}
+Cargo: ${data.contact}
+Serviço: ${data.serviceNeed}
+
+`;
+    } else {
+      bodyText += `Área de Interesse: ${data.interestArea}
+
+`;
+    }
+    bodyText += `Descrição:
+${data.description}
+
+`;
+    if (data.fileName) {
+      bodyText += `(O utilizador indicou que tem o ficheiro "${data.fileName}" para anexar. Por favor anexe-o ao responder a este email se necessário.)`;
+    }
+    window.location.href = `mailto:repfix3@gmail.com?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
+    setDone(true);
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { id: "orcamentos", className: "relative py-28", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-4xl mx-auto px-6", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center max-w-2xl mx-auto", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-xs font-semibold tracking-[0.2em] text-[#BF953F] uppercase", children: "Pedido de Análise" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "mt-3 text-4xl md:text-5xl font-bold tracking-tight", children: [
+        "Formulário ",
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-gold-gradient", children: "de Contacto" })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-4 text-muted-foreground", children: "Respondemos em menos de 48h úteis com um plano de ação claro e sem compromisso." })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-12 rounded-3xl border-gold p-1.5 shadow-[var(--shadow-elegant)]", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-[1.35rem] bg-[#0B1325]/90 p-8 md:p-10", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between mb-2 text-xs text-muted-foreground", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
+          "Passo ",
+          Math.min(step + 1, steps.length),
+          " de ",
+          steps.length,
+          " · ",
+          steps[step] ?? "Concluído"
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
+          Math.round(progress),
+          "%"
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-1.5 rounded-full bg-[#1a2540] overflow-hidden", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-full bg-gold-gradient transition-all duration-500", style: { width: `${done ? 100 : progress}%` } }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-8 min-h-[320px]", children: done ? /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center py-10 animate-in fade-in slide-in-from-bottom-2 duration-500", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mx-auto h-14 w-14 rounded-full bg-gold-gradient flex items-center justify-center text-[#0B1325]", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Check, { className: "h-7 w-7", strokeWidth: 3 }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "mt-5 text-2xl font-bold", children: "Encaminhado para o seu Email" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-2 text-muted-foreground text-sm", children: "O seu cliente de e-mail foi aberto com os dados preenchidos. Por favor, reveja e clique em enviar." })
+      ] }) : step === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "animate-in fade-in duration-300 space-y-6", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-lg font-semibold text-center", children: "Como podemos ajudar?" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground text-center mt-1", children: "Escolha o seu perfil para personalizarmos o atendimento." })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid md:grid-cols-2 gap-4", children: [
+          { id: "empresa", icon: Building2, title: "Sou uma Empresa", desc: "Outsourcing, peritagens e relatórios técnicos." },
+          { id: "particular", icon: User, title: "Sou um Cliente Particular", desc: "Quero analisar uma necessidade técnica pessoal." }
+        ].map((o) => {
+          const active = profile === o.id;
+          return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            "button",
+            {
+              onClick: () => setProfile(o.id),
+              className: `text-left rounded-2xl p-6 transition-all ${active ? "border-gold bg-[rgba(252,246,186,0.06)]" : "glass-card hover:bg-[rgba(191,149,63,0.06)]"}`,
+              children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `h-12 w-12 rounded-xl flex items-center justify-center ${active ? "bg-gold-gradient text-[#0B1325]" : "bg-[#0e1a36] text-[#FCF6BA] border border-[#BF953F]/30"}`, children: /* @__PURE__ */ jsxRuntimeExports.jsx(o.icon, { className: "h-6 w-6" }) }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-4 font-semibold", children: o.title }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-xs text-muted-foreground mt-1.5", children: o.desc })
+              ]
+            },
+            o.id
+          );
+        }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid md:grid-cols-2 gap-4 pt-2", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Field, { label: "Nome *", value: data.name, onChange: (v) => setData({ ...data, name: v }), placeholder: "O seu nome" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Field, { label: "Email *", type: "email", value: data.email, onChange: (v) => setData({ ...data, email: v }), placeholder: "nome@email.pt" }),
+            !isEmailValid && /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-red-500 text-xs mt-1.5 flex items-center gap-1", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(CircleAlert, { className: "w-3 h-3" }),
+              " O contacto de email não é válido"
+            ] })
+          ] })
+        ] })
+      ] }) : step === 1 ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "animate-in fade-in duration-300 space-y-5", children: profile === "empresa" ? /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-lg font-semibold", children: "Sobre a sua empresa" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid md:grid-cols-2 gap-4", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Field, { label: "Nome da empresa", value: data.company, onChange: (v) => setData({ ...data, company: v }), placeholder: "Acme, Lda." }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Field, { label: "Função / Cargo", value: data.contact, onChange: (v) => setData({ ...data, contact: v }), placeholder: "Ex.: IT Manager" })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          SelectField,
+          {
+            label: "Serviço pretendido",
+            value: data.serviceNeed,
+            onChange: (v) => setData({ ...data, serviceNeed: v }),
+            options: empresaServices,
+            placeholder: "Selecione um serviço"
+          }
+        )
+      ] }) : /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-lg font-semibold", children: "Área de interesse" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground", children: "Indique a área que despertou o seu interesse — sem necessidade de identificar um equipamento específico." }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          SelectField,
+          {
+            label: "Área que despertou interesse",
+            value: data.interestArea,
+            onChange: (v) => setData({ ...data, interestArea: v }),
+            options: particularAreas,
+            placeholder: "Selecione uma área"
+          }
+        )
+      ] }) }) : /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "animate-in fade-in duration-300 space-y-5", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-lg font-semibold", children: "Descreva a sua situação" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "textarea",
+          {
+            value: data.description,
+            onChange: (e) => setData({ ...data, description: e.target.value }),
+            rows: 6,
+            placeholder: "Conte-nos o que se passa: sintomas, contexto, modelo do equipamento ou objetivo do pedido...",
+            className: "w-full rounded-xl bg-[#0e1a36] border border-border/60 px-4 py-3 text-sm outline-none focus:border-[#BF953F] transition-colors resize-none"
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Field, { label: "Telefone de contacto *", value: data.phone, onChange: (v) => setData({ ...data, phone: v }), placeholder: "+351 900 000 000" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "block", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-xs font-medium text-muted-foreground mb-1.5", children: "Anexar fotos ou ficheiros (opcional)" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-xl border border-dashed border-[#BF953F]/40 bg-[#0e1a36]/60 px-4 py-6 flex items-center gap-3 cursor-pointer hover:border-[#FCF6BA]/60 transition-colors", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-10 w-10 rounded-lg bg-gold-gradient text-[#0B1325] flex items-center justify-center shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Upload, { className: "h-5 w-5" }) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-sm", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "font-medium", children: data.fileName || "Arraste ou clique para carregar" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-xs text-muted-foreground mt-0.5", children: "Fotografias, vídeos curtos ou documentação anterior." })
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "input",
+              {
+                type: "file",
+                className: "hidden",
+                onChange: (e) => setData({ ...data, fileName: e.target.files?.[0]?.name ?? "" })
+              }
+            )
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: "Ao submeter, concorda em ser contactado pela equipa REPFIX para fins de análise do pedido." })
+      ] }) }),
+      !done && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mt-8 flex items-center justify-between", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          "button",
+          {
+            onClick: () => setStep((s) => Math.max(0, s - 1)),
+            disabled: step === 0,
+            className: "inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground disabled:opacity-30",
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowLeft, { className: "h-4 w-4" }),
+              " Anterior"
+            ]
+          }
+        ),
+        step < steps.length - 1 ? /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          "button",
+          {
+            onClick: () => canNext && setStep((s) => s + 1),
+            disabled: !canNext,
+            className: "inline-flex items-center gap-2 rounded-full bg-gold-gradient text-[#0B1325] font-semibold px-6 py-3 disabled:opacity-40 hover:scale-[1.02] transition-transform",
+            children: [
+              "Continuar ",
+              /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowRight, { className: "h-4 w-4" })
+            ]
+          }
+        ) : /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          "button",
+          {
+            onClick: handleSubmit,
+            disabled: !canNext,
+            className: "inline-flex items-center gap-2 rounded-full bg-gold-gradient text-[#0B1325] font-semibold px-6 py-3 disabled:opacity-40 hover:scale-[1.02] transition-transform",
+            children: [
+              "Enviar pedido ",
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Check, { className: "h-4 w-4" })
+            ]
+          }
+        )
+      ] })
+    ] }) })
+  ] }) });
+}
+function Field({
+  label,
+  value,
+  onChange,
+  placeholder,
+  type = "text"
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("label", { className: "text-xs font-medium text-muted-foreground", children: label }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "input",
+      {
+        type,
+        value,
+        onChange: (e) => onChange(e.target.value),
+        placeholder,
+        className: "mt-1.5 w-full rounded-xl bg-[#0e1a36] border border-border/60 px-4 py-3 text-sm outline-none focus:border-[#BF953F] transition-colors"
+      }
+    )
+  ] });
+}
+function SelectField({
+  label,
+  value,
+  onChange,
+  options,
+  placeholder
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("label", { className: "text-xs font-medium text-muted-foreground", children: label }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      "select",
+      {
+        value,
+        onChange: (e) => onChange(e.target.value),
+        className: "mt-1.5 w-full rounded-xl bg-[#0e1a36] border border-border/60 px-4 py-3 text-sm outline-none focus:border-[#BF953F] transition-colors",
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: "", disabled: true, children: placeholder ?? "Selecione" }),
+          options.map((o) => /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: o, children: o }, o))
+        ]
+      }
+    )
+  ] });
+}
+function Footer() {
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("footer", { className: "relative border-t border-border/60 mt-10", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-3 gap-10 items-center", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: logo, alt: "REPFIX Serviços Técnicos", className: "h-14 w-auto" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-5 text-sm text-muted-foreground max-w-xs leading-relaxed", children: "Engenharia técnica de confiança para equipamentos informáticos, eletrónicos e eletrodomésticos." })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-3 text-sm", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-xs font-semibold tracking-[0.2em] text-[#BF953F] uppercase", children: "Contacto" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("a", { href: "mailto:repfix3@gmail.com", className: "flex items-center gap-2.5 text-foreground/90 hover:text-[#FCF6BA] transition-colors", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Mail, { className: "h-4 w-4 text-[#BF953F]" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "repfix3@gmail.com" })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("a", { href: "https://www.repfix.pt", className: "flex items-center gap-2.5 text-foreground/90 hover:text-[#FCF6BA] transition-colors", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Globe, { className: "h-4 w-4 text-[#BF953F]" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "www.repfix.pt" })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex md:justify-end", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-2xl border-gold p-1", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-xl bg-[#0B1325] p-4 flex items-center gap-4", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-20 w-20 rounded-lg bg-gold-gradient p-1.5", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-full w-full rounded-md bg-[#0B1325] flex items-center justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(QrCode, { className: "h-12 w-12 text-[#FCF6BA]", strokeWidth: 1.4 }) }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-xs", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "font-semibold text-foreground", children: "Scan & contacte" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-muted-foreground mt-1", children: [
+            "Acesso rápido",
+            /* @__PURE__ */ jsxRuntimeExports.jsx("br", {}),
+            "ao orçamento"
+          ] })
+        ] })
+      ] }) }) })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "border-t border-border/60", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
+        "© ",
+        (/* @__PURE__ */ new Date()).getFullYear(),
+        " REPFIX Serviços Técnicos. Todos os direitos reservados."
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-4", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#", className: "hover:text-foreground transition-colors", children: "Política de privacidade" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("a", { href: "#", className: "hover:text-foreground transition-colors", children: "Política de proteção de dados - RGPD" })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Feito com rigor em Portugal" })
+    ] }) })
+  ] });
+}
+function Index() {
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("main", { className: "min-h-screen", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Navbar, {}),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Hero, {}),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ImageBreak, { image: "https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=1920&q=80", eyebrow: "Eletrónica · Precisão", title: "Laboratório eletrónico com instrumentação dedicada", caption: "Equipamento moderno de medição e teste para diagnóstico fiável de avarias." }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Services, {}),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ImageBreak, { image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80", eyebrow: "Hardware · Análise", title: "Diagnóstico ao nível do hardware", caption: "Inspeção rigorosa e ferramentas de teste de alta resolução para resultados claros.", align: "right" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Values, {}),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Reports, {}),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ImageBreak, { image: "https://images.unsplash.com/photo-1518770660967-3a4e0e3d8ec6?auto=format&fit=crop&w=1920&q=80", eyebrow: "Peritagem · Evidência", title: "Relatórios técnicos defensáveis e auditáveis", caption: "Documentação rigorosa pronta para os seus fluxos de decisão." }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(BudgetForm, {}),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Footer, {})
+  ] });
+}
+export {
+  Index as component
+};
