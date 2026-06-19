@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Building2, User, ArrowLeft, ArrowRight, Check, Upload, AlertCircle } from "lucide-react";
+import { Building2, User, ArrowLeft, ArrowRight, Check, Upload, AlertCircle, Loader2 } from "lucide-react";
+import { toast } from "sonner";
+import { sendTicketEmail } from "../../lib/email";
 
 type Profile = "empresa" | "particular" | null;
 
@@ -24,7 +26,9 @@ const particularAreas = [
 export function BudgetForm() {
   const [step, setStep] = useState(0);
   const [profile, setProfile] = useState<Profile>(null);
-  const [data, setData] = useState({
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const initialData = {
     name: "",
     email: "",
     company: "",
@@ -34,14 +38,14 @@ export function BudgetForm() {
     description: "",
     fileName: "",
     phone: "",
-  });
-  const [done, setDone] = useState(false);
+  };
+  const [data, setData] = useState(initialData);
 
   const steps = ["Perfil", "Detalhes", "Pedido"];
   const progress = ((step + 1) / steps.length) * 100;
 
   // Validação de email
-  const isEmailValid = data.email === "" || /\S+@\S+\.\S+/.test(data.email);
+  const isEmailValid = data.email === "" || /\\S+@\\S+\\.\\S+/.test(data.email);
   const baseValid = data.name.trim().length > 1 && data.email.trim().length > 1 && isEmailValid;
 
   const canNext =
@@ -50,25 +54,36 @@ export function BudgetForm() {
     (step === 1 && profile === "particular" && data.interestArea) ||
     (step === 2 && data.description.trim().length > 5 && data.phone.trim().length > 5);
 
-  const handleSubmit = () => {
-    const isB2B = profile === "empresa";
-    const prefix = isB2B ? "B2B" : "B2C";
-    const subject = encodeURIComponent(`Contacto Web "${prefix} – ${data.name}"`);
-    
-    let bodyText = `Nome: ${data.name}\nEmail: ${data.email}\nTelefone: ${data.phone}\n\n`;
-    if (isB2B) {
-      bodyText += `Empresa: ${data.company}\nCargo: ${data.contact}\nServiço: ${data.serviceNeed}\n\n`;
-    } else {
-      bodyText += `Área de Interesse: ${data.interestArea}\n\n`;
-    }
-    bodyText += `Descrição:\n${data.description}\n\n`;
-    if (data.fileName) {
-      bodyText += `(O utilizador indicou que tem o ficheiro "${data.fileName}" para anexar. Por favor anexe-o ao responder a este email se necessário.)`;
-    }
+  const handleSubmit = async () => {
+    try {
+      setIsSubmitting(true);
+      
+      await sendTicketEmail({
+        // @ts-ignore
+        data: {
+          ...data,
+          profile
+        }
+      });
+      
+      toast.success("Pedido enviado com sucesso!", {
+        description: "A nossa equipa entrará em contacto consigo em breve.",
+        className: "bg-[#0e1a36] border border-[#BF953F]/30 text-white",
+      });
 
-    // Abre o cliente de e-mail do utilizador com os dados pré-preenchidos
-    window.location.href = `mailto:repfix3@gmail.com?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
-    setDone(true);
+      // Reset form
+      setData(initialData);
+      setProfile(null);
+      setStep(0);
+      
+    } catch (error) {
+      toast.error("Ocorreu um erro ao enviar o pedido.", {
+        description: "Por favor, tente novamente mais tarde ou contacte-nos por telefone.",
+        className: "bg-[#0e1a36] border border-red-500/30 text-white",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -91,21 +106,11 @@ export function BudgetForm() {
               <span>{Math.round(progress)}%</span>
             </div>
             <div className="h-1.5 rounded-full bg-[#1a2540] overflow-hidden">
-              <div className="h-full bg-gold-gradient transition-all duration-500" style={{ width: `${done ? 100 : progress}%` }} />
+              <div className="h-full bg-gold-gradient transition-all duration-500" style={{ width: `${progress}%` }} />
             </div>
 
             <div className="mt-8 min-h-[320px]">
-              {done ? (
-                <div className="text-center py-10 animate-in fade-in slide-in-from-bottom-2 duration-500">
-                  <div className="mx-auto h-14 w-14 rounded-full bg-gold-gradient flex items-center justify-center text-[#0B1325]">
-                    <Check className="h-7 w-7" strokeWidth={3} />
-                  </div>
-                  <h3 className="mt-5 text-2xl font-bold">Encaminhado para o seu Email</h3>
-                  <p className="mt-2 text-muted-foreground text-sm">
-                    O seu cliente de e-mail foi aberto com os dados preenchidos. Por favor, reveja e clique em enviar.
-                  </p>
-                </div>
-              ) : step === 0 ? (
+              {step === 0 ? (
                 <div className="animate-in fade-in duration-300 space-y-6">
                   <div>
                     <h3 className="text-lg font-semibold text-center">Como podemos ajudar?</h3>
@@ -216,34 +221,36 @@ export function BudgetForm() {
               )}
             </div>
 
-            {!done && (
-              <div className="mt-8 flex items-center justify-between">
+            <div className="mt-8 flex items-center justify-between">
+              <button
+                onClick={() => setStep((s) => Math.max(0, s - 1))}
+                disabled={step === 0 || isSubmitting}
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground disabled:opacity-30"
+              >
+                <ArrowLeft className="h-4 w-4" /> Anterior
+              </button>
+              {step < steps.length - 1 ? (
                 <button
-                  onClick={() => setStep((s) => Math.max(0, s - 1))}
-                  disabled={step === 0}
-                  className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground disabled:opacity-30"
+                  onClick={() => canNext && setStep((s) => s + 1)}
+                  disabled={!canNext || isSubmitting}
+                  className="inline-flex items-center gap-2 rounded-full bg-gold-gradient text-[#0B1325] font-semibold px-6 py-3 disabled:opacity-40 hover:scale-[1.02] transition-transform"
                 >
-                  <ArrowLeft className="h-4 w-4" /> Anterior
+                  Continuar <ArrowRight className="h-4 w-4" />
                 </button>
-                {step < steps.length - 1 ? (
-                  <button
-                    onClick={() => canNext && setStep((s) => s + 1)}
-                    disabled={!canNext}
-                    className="inline-flex items-center gap-2 rounded-full bg-gold-gradient text-[#0B1325] font-semibold px-6 py-3 disabled:opacity-40 hover:scale-[1.02] transition-transform"
-                  >
-                    Continuar <ArrowRight className="h-4 w-4" />
-                  </button>
-                ) : (
-                  <button
-                    onClick={handleSubmit}
-                    disabled={!canNext}
-                    className="inline-flex items-center gap-2 rounded-full bg-gold-gradient text-[#0B1325] font-semibold px-6 py-3 disabled:opacity-40 hover:scale-[1.02] transition-transform"
-                  >
-                    Enviar pedido <Check className="h-4 w-4" />
-                  </button>
-                )}
-              </div>
-            )}
+              ) : (
+                <button
+                  onClick={handleSubmit}
+                  disabled={!canNext || isSubmitting}
+                  className="inline-flex items-center gap-2 rounded-full bg-gold-gradient text-[#0B1325] font-semibold px-6 py-3 disabled:opacity-40 hover:scale-[1.02] transition-transform"
+                >
+                  {isSubmitting ? (
+                    <>A enviar <Loader2 className="h-4 w-4 animate-spin" /></>
+                  ) : (
+                    <>Enviar pedido <Check className="h-4 w-4" /></>
+                  )}
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>
