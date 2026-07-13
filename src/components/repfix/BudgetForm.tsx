@@ -45,14 +45,14 @@ export function BudgetForm() {
   const progress = ((step + 1) / steps.length) * 100;
 
   // Validação de email
-  const isEmailValid = data.email === "" || /\\S+@\\S+\\.\\S+/.test(data.email);
+  const isEmailValid = data.email === "" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email);
   const baseValid = data.name.trim().length > 1 && data.email.trim().length > 1 && isEmailValid;
 
   const canNext =
     (step === 0 && profile !== null && baseValid) ||
     (step === 1 && profile === "empresa" && data.company && data.contact && data.serviceNeed) ||
     (step === 1 && profile === "particular" && data.interestArea) ||
-    (step === 2 && data.description.trim().length > 5 && data.phone.trim().length > 5);
+    (step === 2 && data.phone.trim().length > 5);
 
   const handleSubmit = async () => {
     try {
