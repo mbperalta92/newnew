@@ -73,19 +73,45 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "REPFIX - Serviços Técnicos" },
-      { name: "description", content: "Engenharia técnica de confiança para equipamentos informáticos, eletrónicos e eletrodomésticos." },
-      { name: "author", content: "REPFIX" },
-      { property: "og:title", content: "REPFIX - Serviços Técnicos" },
-      { property: "og:description", content: "Engenharia técnica de confiança para equipamentos informáticos, eletrónicos e eletrodomésticos." },
+      { title: "REPFIX | Diagnóstico Eletrónico, Assistência Técnica e Relatórios" },
+      {
+        name: "description",
+        content:
+          "Serviços especializados em diagnóstico eletrónico de hardware, reparações e relatórios técnicos para clientes particulares e parceiros empresariais.",
+      },
+      { name: "author", content: "REPFIX Serviços Técnicos" },
+
+      // Open Graph Tags (WhatsApp, LinkedIn, Facebook)
+      { property: "og:title", content: "REPFIX | Diagnóstico Eletrónico, Assistência Técnica e Relatórios" },
+      {
+        property: "og:description",
+        content:
+          "Serviços especializados em diagnóstico eletrónico de hardware, reparações e relatórios técnicos para clientes particulares e parceiros empresariais.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
+      { property: "og:url", content: "https://www.repfix.pt" },
+      { property: "og:image", content: "https://www.repfix.pt/og-image.png" },
+      { property: "og:site_name", content: "REPFIX" },
+      { property: "og:locale", content: "pt_PT" },
+
+      // Twitter Card Tags
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "REPFIX | Diagnóstico Eletrónico, Assistência Técnica e Relatórios" },
+      {
+        name: "twitter:description",
+        content:
+          "Serviços especializados em diagnóstico eletrónico de hardware, reparações e relatórios técnicos para clientes particulares e parceiros empresariais.",
+      },
+      { name: "twitter:image", content: "https://www.repfix.pt/og-image.png" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "icon", type: "image/x-icon", href: "/favicon.svg" },
+      { rel: "apple-touch-icon", sizes: "180x180", href: "/favicon.svg" },
     ],
   }),
   shellComponent: RootShell,
@@ -104,6 +130,14 @@ function RootShell({ children }: { children: React.ReactNode }) {
         {children}
         <Toaster richColors theme="dark" position="top-right" />
         <Scripts />
+        {/* Cloudflare Web Analytics */}
+        {/*
+          <script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon='{"token": "YOUR_CLOUDFLARE_BEACON_TOKEN"}'
+          ></script>
+        */}
       </body>
     </html>
   );

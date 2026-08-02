@@ -12,10 +12,30 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "REPFIX — Serviços Técnicos para Empresas e Particulares" },
-      { name: "description", content: "Diagnóstico transparente, reparação e relatórios técnicos para informática, eletrónica e eletrodomésticos. Soluções para empresas e clientes particulares." },
-      { property: "og:title", content: "REPFIX — Serviços Técnicos" },
-      { property: "og:description", content: "Parceria técnica rigorosa e transparente. Para a sua empresa ou para o seu equipamento pessoal." },
+      { title: "REPFIX | Diagnóstico Eletrónico, Assistência Técnica e Relatórios" },
+      {
+        name: "description",
+        content:
+          "Serviços especializados em diagnóstico eletrónico de hardware, reparações e relatórios técnicos para clientes particulares e parceiros empresariais.",
+      },
+      { property: "og:title", content: "REPFIX | Diagnóstico Eletrónico, Assistência Técnica e Relatórios" },
+      {
+        property: "og:description",
+        content:
+          "Serviços especializados em diagnóstico eletrónico de hardware, reparações e relatórios técnicos para clientes particulares e parceiros empresariais.",
+      },
+      { property: "og:image", content: "https://www.repfix.pt/og-image.png" },
+      { property: "og:url", content: "https://www.repfix.pt" },
+      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "REPFIX" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "REPFIX | Diagnóstico Eletrónico, Assistência Técnica e Relatórios" },
+      {
+        name: "twitter:description",
+        content:
+          "Serviços especializados em diagnóstico eletrónico de hardware, reparações e relatórios técnicos para clientes particulares e parceiros empresariais.",
+      },
+      { name: "twitter:image", content: "https://www.repfix.pt/og-image.png" },
     ],
   }),
 });
