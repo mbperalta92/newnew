@@ -10,13 +10,11 @@ const empresaServices = [
   "Pedido de Proposta / Orçamento",
   "Avaliação Técnica de Equipamentos",
   "Inspeção / Verificação Técnica",
-  "Peritagem Técnica",
   "Parceria Comercial",
   "Outro Assunto"
 ];
 
 const particularAreas = [
-  "Peritagem",
   "Avaliação Técnica",
   "Pedido de Orçamento",
   "Esclarecimento Técnico",
@@ -38,6 +36,7 @@ export function BudgetForm() {
     description: "",
     fileName: "",
     phone: "",
+    rgpdConsent: false,
   };
   const [data, setData] = useState(initialData);
 
@@ -52,7 +51,7 @@ export function BudgetForm() {
     (step === 0 && profile !== null && baseValid) ||
     (step === 1 && profile === "empresa" && data.company && data.contact && data.serviceNeed) ||
     (step === 1 && profile === "particular" && data.interestArea) ||
-    (step === 2 && data.phone.trim().length > 5);
+    (step === 2 && data.phone.trim().length > 5 && data.rgpdConsent);
 
   const handleSubmit = async () => {
     try {
@@ -118,8 +117,8 @@ export function BudgetForm() {
                   </div>
                   <div className="grid md:grid-cols-2 gap-4">
                     {[
-                      { id: "empresa" as const, icon: Building2, title: "Sou uma Empresa", desc: "Outsourcing, peritagens e relatórios técnicos." },
-                      { id: "particular" as const, icon: User, title: "Sou um Cliente Particular", desc: "Quero analisar uma necessidade técnica pessoal." },
+                      { id: "empresa" as const, icon: Building2, title: "Sou uma Empresa", desc: "Outsourcing técnico, avaliações de equipamentos, gestão de swap e relatórios corporativos." },
+                      { id: "particular" as const, icon: User, title: "Sou um Cliente Particular", desc: "Relatórios técnicos independentes para entidades (ex.: EDP), avaliação de equipamentos e suporte." },
                     ].map((o) => {
                       const active = profile === o.id;
                       return (
@@ -158,11 +157,11 @@ export function BudgetForm() {
                     <>
                       <h3 className="text-lg font-semibold">Sobre a sua empresa</h3>
                       <div className="grid md:grid-cols-2 gap-4">
-                        <Field label="Nome da empresa" value={data.company} onChange={(v) => setData({ ...data, company: v })} placeholder="Acme, Lda." />
-                        <Field label="Função / Cargo" value={data.contact} onChange={(v) => setData({ ...data, contact: v })} placeholder="Ex.: IT Manager" />
+                        <Field label="Nome da empresa *" value={data.company} onChange={(v) => setData({ ...data, company: v })} placeholder="Acme, Lda." />
+                        <Field label="Função / Cargo *" value={data.contact} onChange={(v) => setData({ ...data, contact: v })} placeholder="Ex.: IT Manager" />
                       </div>
                       <SelectField
-                        label="Serviço pretendido"
+                        label="Serviço pretendido *"
                         value={data.serviceNeed}
                         onChange={(v) => setData({ ...data, serviceNeed: v })}
                         options={empresaServices}
@@ -174,7 +173,7 @@ export function BudgetForm() {
                       <h3 className="text-lg font-semibold">Área de interesse</h3>
                       <p className="text-sm text-muted-foreground">Indique a área que despertou o seu interesse — sem necessidade de identificar um equipamento específico.</p>
                       <SelectField
-                        label="Área que despertou interesse"
+                        label="Área que despertou interesse *"
                         value={data.interestArea}
                         onChange={(v) => setData({ ...data, interestArea: v })}
                         options={particularAreas}
@@ -189,7 +188,7 @@ export function BudgetForm() {
                   <textarea
                     value={data.description}
                     onChange={(e) => setData({ ...data, description: e.target.value })}
-                    rows={6}
+                    rows={5}
                     placeholder="Conte-nos o que se passa: sintomas, contexto, modelo do equipamento ou objetivo do pedido..."
                     className="w-full rounded-xl bg-[#0e1a36] border border-border/60 px-4 py-3 text-sm outline-none focus:border-[#BF953F] transition-colors resize-none"
                   />
@@ -198,7 +197,7 @@ export function BudgetForm() {
 
                   <label className="block">
                     <div className="text-xs font-medium text-muted-foreground mb-1.5">Anexar fotos ou ficheiros (opcional)</div>
-                    <div className="rounded-xl border border-dashed border-[#BF953F]/40 bg-[#0e1a36]/60 px-4 py-6 flex items-center gap-3 cursor-pointer hover:border-[#FCF6BA]/60 transition-colors">
+                    <div className="rounded-xl border border-dashed border-[#BF953F]/40 bg-[#0e1a36]/60 px-4 py-5 flex items-center gap-3 cursor-pointer hover:border-[#FCF6BA]/60 transition-colors">
                       <div className="h-10 w-10 rounded-lg bg-gold-gradient text-[#0B1325] flex items-center justify-center shrink-0">
                         <Upload className="h-5 w-5" />
                       </div>
@@ -214,9 +213,17 @@ export function BudgetForm() {
                     </div>
                   </label>
 
-                  <p className="text-xs text-muted-foreground">
-                    Ao submeter, concorda em ser contactado pela equipa REPFIX para fins de análise do pedido.
-                  </p>
+                  <label className="flex items-start gap-3 cursor-pointer pt-2">
+                    <input
+                      type="checkbox"
+                      checked={data.rgpdConsent}
+                      onChange={(e) => setData({ ...data, rgpdConsent: e.target.checked })}
+                      className="mt-0.5 h-4 w-4 rounded border-border bg-[#0e1a36] text-[#BF953F] focus:ring-[#BF953F] accent-[#BF953F] shrink-0"
+                    />
+                    <span className="text-xs text-muted-foreground leading-relaxed">
+                      Concordo com o tratamento dos meus dados pessoais nos termos da <a href="#" className="text-[#FCF6BA] underline hover:text-[#BF953F]">Política de Privacidade e RGPD</a> para efeitos de processamento e resposta a este pedido. *
+                    </span>
+                  </label>
                 </div>
               )}
             </div>

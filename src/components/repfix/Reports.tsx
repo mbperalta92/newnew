@@ -16,8 +16,8 @@ export function Reports() {
             Documentação técnica <span className="text-gold-gradient">de nível corporativo</span>
           </h2>
           <p className="mt-5 text-muted-foreground leading-relaxed">
-            Cada intervenção gera um relatório auditável, defensável e pronto para os fluxos de aprovação
-            das suas equipas financeiras, jurídicas e de seguros.
+            Cada avaliação técnica gera um relatório auditável, defensável e pronto para os fluxos de decisão
+            das suas equipas de controlo de qualidade, fabricantes e gestão de retalho.
           </p>
           <ul className="mt-7 space-y-4">
             {features.map((f) => (
@@ -54,11 +54,11 @@ export function Reports() {
               <div className="grid grid-cols-2 gap-3 mt-5 text-xs">
                 <div className="glass-card rounded-lg p-3">
                   <div className="text-muted-foreground">Parceiro</div>
-                  <div className="mt-1 font-semibold">Acme Insurance Group</div>
+                  <div className="mt-1 font-semibold">TechBrand Global</div>
                 </div>
                 <div className="glass-card rounded-lg p-3">
                   <div className="text-muted-foreground">Tipo</div>
-                  <div className="mt-1 font-semibold">Peritagem · Sinistro #4821</div>
+                  <div className="mt-1 font-semibold">Avaliação Técnica · Ocorrência #4821</div>
                 </div>
               </div>
 
@@ -67,7 +67,7 @@ export function Reports() {
                 {[
                   ["Fonte", "Sobretensão na rede pública", "Confirmado"],
                   ["Placa", "Componentes SMD danificados", "Substituir"],
-                  ["Cobertura", "Apólice multi-riscos AC-12", "Elegível"],
+                  ["Âmbito", "Diagnóstico de Garantia de Hardware", "Elegível"],
                 ].map(([a, b, c]) => (
                   <div key={a} className="grid grid-cols-12 gap-2 py-1.5 border-b border-border/40 last:border-0">
                     <div className="col-span-3 text-muted-foreground">{a}</div>

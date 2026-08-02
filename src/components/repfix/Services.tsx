@@ -1,15 +1,15 @@
-import { Search, Building2, FileSearch, CircuitBoard, Tv, Laptop, Handshake, Users, Briefcase, Crosshair, ClipboardCheck, Calculator, ArrowUpRight } from "lucide-react";
+import { Search, Building2, CircuitBoard, Tv, Laptop, Handshake, Users, Briefcase, Package, Truck, Wrench, ArrowUpRight } from "lucide-react";
 
 const blocks = [
   {
     badge: "Avaliação",
-    tag: "Inspeção",
+    tag: "Avaliação Técnica",
     icon: Search,
     title: "🔍 Avaliação técnica",
     desc: "Realizamos avaliações técnicas independentes para identificar falhas, analisar o estado de equipamentos e apoiar decisões fundamentadas através de uma abordagem rigorosa e objetiva.",
     items: [
-      { icon: CircuitBoard, label: "Diagnóstico técnico especializado" },
-      { icon: Tv, label: "Avaliação de equipamentos e sistemas" },
+      { icon: CircuitBoard, label: "Avaliações técnicas independentes" },
+      { icon: Tv, label: "Diagnóstico de equipamentos e sistemas" },
       { icon: Laptop, label: "Análise de falhas e desempenho" },
     ],
     cta: "Pedir avaliação",
@@ -28,17 +28,17 @@ const blocks = [
     cta: "Pedir proposta B2B",
   },
   {
-    badge: "Peritagens",
-    tag: "Laudos",
-    icon: FileSearch,
-    title: "📑 Peritagens",
-    desc: "Produzimos relatórios técnicos independentes e fundamentados para apoiar processos de análise, investigação de ocorrências e tomada de decisão.",
+    badge: "Logística",
+    tag: "Apoio B2B",
+    icon: Truck,
+    title: "📦 Swap & Logística",
+    desc: "Apoio especializado para grandes superfícies e marcas, focado na gestão rápida e eficiente de troca de equipamentos (swap).",
     items: [
-      { icon: Crosshair, label: "Peritagens técnicas independentes" },
-      { icon: ClipboardCheck, label: "Investigação de ocorrências" },
-      { icon: Calculator, label: "Relatórios técnicos fundamentados" },
+      { icon: Package, label: "Swap de equipamentos" },
+      { icon: Truck, label: "Logística e recolha rápida" },
+      { icon: Wrench, label: "Triagem técnica de devoluções" },
     ],
-    cta: "Solicitar relatório",
+    cta: "Discutir parceria",
   },
 ];
 
@@ -52,7 +52,7 @@ export function Services() {
             Três frentes técnicas, <span className="text-gold-gradient">um único padrão de rigor</span>
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Particulares, empresas ou peritagens independentes — adaptamos o método, mantemos a transparência e a precisão técnica.
+            Fabricantes, retalhistas e mercado corporativo — adaptamos o método e garantimos a precisão técnica. <br/><span className="text-[#BF953F] font-medium text-sm block mt-2">*Nota: As assistências técnicas aos equipamentos são estritamente efetuadas sob consulta.</span>
           </p>
         </div>
 

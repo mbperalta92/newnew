@@ -38,12 +38,13 @@ function Index() {
         title="Diagnóstico ao nível do hardware"
         caption="Inspeção rigorosa e ferramentas de teste de alta resolução para resultados claros."
         align="right"
+        singleLineCaptionDesktop={true}
       />
       <Values />
       <Reports />
       <ImageBreak
         image="https://images.unsplash.com/photo-1518770660967-3a4e0e3d8ec6?auto=format&fit=crop&w=1920&q=80"
-        eyebrow="Peritagem · Evidência"
+        eyebrow="Avaliação · Evidência"
         title="Relatórios técnicos defensáveis e auditáveis"
         caption="Documentação rigorosa pronta para os seus fluxos de decisão."
       />

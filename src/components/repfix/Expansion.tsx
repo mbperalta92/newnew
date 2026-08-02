@@ -5,8 +5,8 @@ const specialties = [
   "Manutenção preventiva",
   "Inventário de ativos",
   "Etiquetagem de equipamentos",
-  "Apoio a seguradoras",
-  "Recuperação pós-sinistro",
+  "Certificação de qualidade",
+  "Triagem logística",
   "Monitorização IoT",
 ];
 
@@ -40,7 +40,7 @@ export function Expansion() {
 
           <div className="mt-7 pt-5 border-t border-[#BF953F]/15">
             <p className="text-[11px] text-muted-foreground leading-relaxed italic">
-              Peritagem Técnica Independente (como parceiro ou subcontratado) aplicável a: Seguros, Tribunais, Empresas, Litígios e Fornecedores.
+              Avaliação Técnica Independente (como parceiro ou subcontratado) aplicável a: Fabricantes, Marcas, Retalhistas, Empresas e Fornecedores.
             </p>
           </div>
         </div>

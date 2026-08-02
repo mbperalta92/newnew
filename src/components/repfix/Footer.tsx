@@ -1,4 +1,4 @@
-import { Globe } from "lucide-react";
+import { Globe, Mail } from "lucide-react";
 import logo from "@/assets/repfix-logo.svg";
 
 export function Footer() {
@@ -7,10 +7,16 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="flex flex-col items-center md:items-start gap-4">
           <img src={logo} alt="REPFIX Serviços Técnicos" className="h-14 w-auto" />
-          <a href="https://www.repfix.pt" className="flex items-center gap-2.5 text-sm text-foreground/90 hover:text-[#FCF6BA] transition-colors">
-            <Globe className="h-4 w-4 text-[#BF953F]" />
-            <span>www.repfix.pt</span>
-          </a>
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-sm text-foreground/90">
+            <a href="https://www.repfix.pt" className="flex items-center gap-2.5 hover:text-[#FCF6BA] transition-colors">
+              <Globe className="h-4 w-4 text-[#BF953F]" />
+              <span>www.repfix.pt</span>
+            </a>
+            <a href="mailto:repfix3@gmail.com" className="flex items-center gap-2.5 hover:text-[#FCF6BA] transition-colors">
+              <Mail className="h-4 w-4 text-[#BF953F]" />
+              <span>repfix3@gmail.com</span>
+            </a>
+          </div>
         </div>
       </div>
       <div className="border-t border-border/60">

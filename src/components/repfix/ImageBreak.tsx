@@ -4,9 +4,10 @@ type Props = {
   title: string;
   caption?: string;
   align?: "left" | "right" | "center";
+  singleLineCaptionDesktop?: boolean;
 };
 
-export function ImageBreak({ image, eyebrow, title, caption, align = "left" }: Props) {
+export function ImageBreak({ image, eyebrow, title, caption, align = "left", singleLineCaptionDesktop = false }: Props) {
   const alignCls = align === "right" ? "ml-auto text-right" : align === "center" ? "mx-auto text-center" : "text-left";
   return (
     <section className="relative py-12">
@@ -23,12 +24,16 @@ export function ImageBreak({ image, eyebrow, title, caption, align = "left" }: P
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_90%,rgba(170,119,28,0.20),transparent_55%)]" />
 
           <div className="absolute inset-0 flex items-center px-8 md:px-14">
-            <div className={`max-w-xl ${alignCls}`}>
+            <div className={`${singleLineCaptionDesktop ? "max-w-3xl" : "max-w-xl"} ${alignCls}`}>
               <div className="text-[11px] font-semibold tracking-[0.25em] text-[#FCF6BA] uppercase">{eyebrow}</div>
               <h3 className="mt-3 text-2xl md:text-4xl font-bold tracking-tight leading-tight">
                 <span className="text-gold-gradient">{title}</span>
               </h3>
-              {caption && <p className="mt-3 text-sm md:text-base text-foreground/85 max-w-md">{caption}</p>}
+              {caption && (
+                <p className={`mt-3 text-sm md:text-base text-foreground/85 ${singleLineCaptionDesktop ? "max-w-none lg:whitespace-nowrap" : "max-w-md"}`}>
+                  {caption}
+                </p>
+              )}
             </div>
           </div>
         </div>

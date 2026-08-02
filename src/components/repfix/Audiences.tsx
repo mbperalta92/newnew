@@ -1,22 +1,22 @@
 import { useState } from "react";
-import { ShieldCheck, Store, Briefcase, CheckCircle2 } from "lucide-react";
+import { Factory, ShieldCheck, Store, Briefcase, CheckCircle2 } from "lucide-react";
 
 const audiences = [
   {
-    id: "seguradoras",
-    icon: ShieldCheck,
-    label: "Seguradoras & Peritagens",
-    title: "Relatórios de precisão para gestão rápida de sinistros",
-    desc: "Apoio técnico independente em peritagens de equipamentos eletrónicos e eletrodomésticos, com laudos defensáveis e orçamentação clara.",
-    points: ["Peritagens em 48h", "Laudo com evidência fotográfica", "Orçamentação alinhada ao mercado"],
+    id: "fabricantes",
+    icon: Factory,
+    label: "Fabricantes & Marcas",
+    title: "Avaliações técnicas rigorosas para garantias",
+    desc: "Apoio técnico e diagnóstico de precisão em equipamentos, emitindo relatórios técnicos independentes e orçamentação clara para validação de garantias.",
+    points: ["Avaliações em 48h", "Relatório com evidência fotográfica", "Controlo de qualidade"],
   },
   {
     id: "retalho",
     icon: Store,
     label: "Retalhistas & Marcas",
-    title: "Suporte técnico white-label e intervenção local",
-    desc: "Operamos em nome da sua marca, garantindo experiência de pós-venda consistente em todo o território.",
-    points: ["Atendimento branded", "Logística reversa", "Reporting KPI mensal"],
+    title: "Gestão eficiente de swap e apoio logístico",
+    desc: "Operamos em nome da sua grande superfície, garantindo a avaliação rápida de devoluções e triagem (swap) de equipamentos.",
+    points: ["Processamento de devoluções", "Logística e triagem", "Reporting de conformidade"],
   },
   {
     id: "pme",

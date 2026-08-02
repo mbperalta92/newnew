@@ -20,7 +20,7 @@ export function Hero() {
         </h1>
 
         <p className="mt-7 mx-auto max-w-3xl text-base md:text-lg text-muted-foreground leading-relaxed">
-          A REPFIX é especializada em avaliação e análise técnica. Realizamos inspeções, diagnósticos, peritagens e auditorias, apoiando empresas e particulares na identificação de falhas, avaliação de riscos, investigação de ocorrências e tomada de decisões fundamentadas através de relatórios técnicos independentes.
+          A REPFIX é especializada em avaliação e análise técnica. Apoiamos fabricantes, marcas e grandes superfícies na identificação de falhas, avaliação de equipamentos e tomada de decisões fundamentadas através de rigorosos relatórios técnicos independentes.
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
